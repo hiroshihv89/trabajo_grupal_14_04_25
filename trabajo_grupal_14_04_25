@@ -1,0 +1,82 @@
+import numpy as np
+
+# 1. (a + b) * k
+a = np.array([2, 3])
+b = np.array([4, -1])
+k = 2
+resultado_1 = (a + b) * k
+print("1:", resultado_1)  # [12  4]
+
+# 2. v1 - m * v2
+v1 = np.array([5, -2])
+v2 = np.array([1, 3])
+m = -1
+resultado_2 = v1 - m * v2
+print("2:", resultado_2)  # [6 1]
+
+# 3. x + y y luego dot con z
+x = np.array([2, 5])
+y = np.array([7, 1])
+z = np.array([1, 0])
+suma_xy = x + y           # [9 6]
+resultado_3 = np.dot(suma_xy, z)
+print("3:", resultado_3)  # 9
+
+# 4. dot entre a y b, luego c = a + b y dot(c, a)
+a = np.array([1, 2])
+b = np.array([2, 1])
+dot_ab = np.dot(a, b)     # 1*2 + 2*1 = 4
+c = a + b                 # [3 3]
+resultado_4 = np.dot(c, a)  # 3*1 + 3*2 = 9
+print("4:", resultado_4)
+
+# 5. w * 3 y luego + [-1, -4]
+w = np.array([4, 2])
+resultado_5 = w * 3 + np.array([-1, -4])  # [12 6] + [-1 -4] = [11 2]
+print("5:", resultado_5)
+
+# 6. escalar * (v1 - v2)
+v1 = np.array([3, 4])
+v2 = np.array([-1, 5])
+escalar = 2
+resultado_6 = escalar * (v1 - v2)  # 2 * ([4, -1]) = [8, -2]
+print("6:", resultado_6)
+
+# 7. (u + v) - 2*v
+u = np.array([6, 1])
+v = np.array([2, 3])
+resultado_7 = (u + v) - 2 * v  # [8, 4] - [4, 6] = [4, -2]
+print("7:", resultado_7)
+
+# 8. Vectores aleatorios y análisis
+np.random.seed(0)  # para resultados reproducibles
+vec1 = np.random.randint(-10, 11, size=2)
+vec2 = np.random.randint(-10, 11, size=2)
+suma_8 = vec1 + vec2
+resta_8 = vec1 - vec2
+dot_8 = np.dot(vec1, vec2)
+print("8: vec1 =", vec1, ", vec2 =", vec2)
+print("   Suma:", suma_8)
+print("   Resta:", resta_8)
+print("   Producto escalar:", dot_8)
+if dot_8 == 0:
+    print("   Son ortogonales (producto escalar = 0).")
+else:
+    print("   No son ortogonales.")
+
+# 9. ¿b es múltiplo escalar de a?
+a = np.array([3, 2])
+b = np.array([6, 4])
+escalar_9 = b[0] / a[0]
+if np.allclose(b, a * escalar_9):
+    print(f"9: Sí, b es múltiplo escalar de a. Escalar = {escalar_9}")
+else:
+    print("9: No es múltiplo escalar.")
+
+# 10. Encontrar un vector u tal que np.dot(v, u) == 0
+v = np.array([1, 2])
+# Una opción es [-2, 1]
+u = np.array([-2, 1])
+dot_10 = np.dot(v, u)
+print("10: u =", u, ", producto escalar =", dot_10)
+print("    Funciona porque 1*(-2) + 2*1 = -2 + 2 = 0 → son ortogonales.")
